@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DestroyOutOfBounds : MonoBehaviour
+{
+    private float TopBound = 40;
+    private float LowBound = -15;
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (transform.position.z > TopBound)
+        {
+            Destroy(gameObject);
+        }
+        else if (transform.position.z < LowBound)
+        {
+            Destroy(gameObject);
+        }
+    }
+}
