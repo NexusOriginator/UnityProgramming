@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnManagerTop : MonoBehaviour
+{
+    private float spawnRangeX = 20;
+    private float spawnPosZ = 35;
+    public GameObject[] animalPrefabs;
+    private float startDelay = 2;
+    private float spawnInterval = 2.5f;
+    private float spawnIntervalR = 1;
+    // Start is called before the first frame update
+    void Start()
+    {
+        InvokeRepeating("SpawnRandomAnimalsTop", startDelay, spawnInterval);
+        InvokeRepeating("SpawnRandomAnimalsRight", startDelay, spawnIntervalR);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    //Spawns animals randomly
+    void SpawnRandomAnimalsTop()
+    {
+        Vector3 spawnPosT = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
+        int animalIndex = Random.Range(0, animalPrefabs.Length);
+        Instantiate(animalPrefabs[animalIndex], spawnPosT, animalPrefabs[animalIndex].transform.rotation);
+    }
+    void SpawnRandomAnimalsRight()
+    {
+        Vector3 spawnPosR = new Vector3(17, 0, Random.Range(8, -11));
+        Vector3 spawnRotR = new Vector3(0, 90, 0);
+        int animalIndex = Random.Range(0, animalPrefabs.Length);
+        Instantiate(animalPrefabs[animalIndex], spawnPosR, animalPrefabs[animalIndex].transform.rotation);
+    }
+}
